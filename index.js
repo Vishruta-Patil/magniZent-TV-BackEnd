@@ -1,10 +1,15 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const connectDB = require("./db/db.connect");
 
-app.get("/", (req,res) => {
-    res.send("Shree Krishna Govinda Harae Murari yanatha narayan vasudeva Radhae Radhae")
-})
+const app = express();
+connectDB();
+
+app.get("/", (req, res) => {
+  res.send(
+    "Shree Krishna Govinda Harae Murari yanatha Narayan Vasudeva Radhae Radhae"
+  );
+});
 
 app.listen(8000, () => {
-    console.log("server has started")
-})
+  console.log("server has started");
+});
