@@ -5,7 +5,7 @@ dotenv.config();
 
 const connectDB = () => {
   try {
-    mongoose.connect(procsess.env.MONGODB_URL, {
+    mongoose.connect(process.env.MONGODB_URL, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
