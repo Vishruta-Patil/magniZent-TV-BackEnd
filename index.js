@@ -3,6 +3,7 @@ const connectDB = require("./db/db.connect");
 
 const video = require("./routes/video.route")
 const category = require("./routes/category.route");
+const auth = require("./routes/auth.routes")
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/videos", video)
 app.use("/category", category)
+app.use("/", auth)
 
 app.listen(8000, () => {
   console.log("server has started");
