@@ -1,14 +1,15 @@
 const express = require("express");
 const connectDB = require("./db/db.connect");
 
-const video = require("./routes/video.route")
+const video = require("./routes/video.route");
 const category = require("./routes/category.route");
-const auth = require("./routes/auth.routes")
+const auth = require("./routes/auth.routes");
+const watchLater = require("./routes/watchLater.routes");
 
 const app = express();
 
 connectDB();
-app.use(express.json())
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send(
@@ -16,9 +17,11 @@ app.get("/", (req, res) => {
   );
 });
 
-app.use("/videos", video)
-app.use("/category", category)
-app.use("/", auth)
+// routes middleware
+app.use("/videos", video);
+app.use("/category", category);
+app.use("/", auth);
+app.use("/watchlater", watchLater);
 
 app.listen(8000, () => {
   console.log("server has started");

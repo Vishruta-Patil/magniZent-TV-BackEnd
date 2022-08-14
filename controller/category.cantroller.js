@@ -26,7 +26,7 @@ exports.getAllCategories = async(req,res) => {
 exports.getCategory = async(req,res) => {
     try {
         const {categoryId} = req.params
-        console.log(categoryId)
+
         var validId = mongoose.Types.ObjectId.isValid(categoryId);
         if(validId) {
         const category = await Category.findById(categoryId)

@@ -5,7 +5,7 @@ dotenv.config();
 
 exports.authVerify = (req,res,next) => {
     const token = req.headers.token
-console.log(req.headers.token)
+
     if(!token) {
         return res.status(404).json({
             success: false,
