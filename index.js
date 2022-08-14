@@ -5,6 +5,7 @@ const video = require("./routes/video.route");
 const category = require("./routes/category.route");
 const auth = require("./routes/auth.routes");
 const watchLater = require("./routes/watchLater.routes");
+const history = require("./routes/history.routes")
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/videos", video);
 app.use("/category", category);
 app.use("/", auth);
 app.use("/watchlater", watchLater);
+app.use("/history", history)
 
 app.listen(8000, () => {
   console.log("server has started");
