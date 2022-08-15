@@ -7,6 +7,7 @@ const auth = require("./routes/auth.routes");
 const watchLater = require("./routes/watchLater.routes");
 const history = require("./routes/history.routes")
 const like = require("./routes/like.routes")
+const playlist = require("./routes/playlist.routes")
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/", auth);
 app.use("/watchlater", watchLater);
 app.use("/history", history);
 app.use("/likes", like)
+app.use("/playlist", playlist)
 
 app.listen(8000, () => {
   console.log("server has started");
