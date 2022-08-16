@@ -1,5 +1,6 @@
 const User = require("../model/user.model");
 const { getToken } = require("../utils/jwtToken");
+const {encryptPassword, validatePassword} = require("../utils/encryptPassword")
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -23,14 +24,12 @@ exports.signIn = async (req, res) => {
       });
     }
 
+    const encryptedPassword = await encryptPassword(password);
+
     const newUser = new User({
       name,
       email,
-      password,
-      likes: [],
-      history: [],
-      playlists: [],
-      watchlater: [],
+      password: encryptedPassword,
     });
 
     const user = await newUser.save();
@@ -60,6 +59,15 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       const token = getToken(user._id);
+
+      const isPasswordValidated = await validatePassword(
+        password,
+        user.password
+      );
+  
+      if (!isPasswordValidated) {
+        return res.json({ status: false, message: "Invalid email or password" });
+      }
 
       return res.status(201).json({
         success: true,

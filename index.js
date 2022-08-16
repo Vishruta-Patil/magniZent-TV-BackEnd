@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDB = require("./db/db.connect");
+const pageNotFound = require("./middleware/pageNotFound")
 
 const video = require("./routes/video.route");
 const category = require("./routes/category.route");
@@ -28,6 +29,8 @@ app.use("/watchlater", watchLater);
 app.use("/history", history);
 app.use("/likes", like)
 app.use("/playlist", playlist)
+
+app.use(pageNotFound)
 
 app.listen(8000, () => {
   console.log("server has started");
