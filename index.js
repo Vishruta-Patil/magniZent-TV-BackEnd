@@ -1,4 +1,6 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const cors = require('cors')
 const connectDB = require("./db/db.connect");
 const pageNotFound = require("./middleware/pageNotFound")
 
@@ -11,8 +13,10 @@ const like = require("./routes/like.routes")
 const playlist = require("./routes/playlist.routes")
 
 const app = express();
-
+dotenv.config();
 connectDB();
+
+app.use(cors())
 app.use(express.json());
 
 const port = process.env.PORT || 8000
