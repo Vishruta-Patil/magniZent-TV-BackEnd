@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
       );
   
       if (!isPasswordValidated) {
-        return res.json({ status: false, message: "Invalid email or password" });
+        return res.status(401).json({ status: false, message: "Invalid email or password" });
       }
 
       return res.status(201).json({
