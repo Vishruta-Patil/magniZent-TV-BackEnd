@@ -19,8 +19,6 @@ connectDB();
 app.use(cors())
 app.use(express.json());
 
-const port = process.env.PORT || 8000
-
 app.get("/", (req, res) => {
   res.send(
     "Shree Krishna Govinda Harae Murari yanatha Narayan Vasudeva Radhae Radhae"
@@ -38,6 +36,6 @@ app.use("/playlist", playlist)
 
 app.use(pageNotFound)
 
-app.listen(port, () => {
+app.listen(process.env.PORT | 8000, () => {
   console.log("server has started");
 });

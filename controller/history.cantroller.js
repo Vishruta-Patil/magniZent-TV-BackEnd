@@ -4,6 +4,7 @@ const History = require("../model/history.model");
 // @route   GET /api/history
 // @access  Private
 exports.getHistoryVideos = async (req, res) => {
+
   try {
     const historyVideos = await History.find({ user: req._id }).populate(
       "video"
