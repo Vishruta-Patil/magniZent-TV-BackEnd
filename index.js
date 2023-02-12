@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send(
-    "Shree Krishna Govinda Harae Murari yanatha Narayan Vasudeva Radhae Radhae"
+    "Backend for MagniZent TV - Video Library"
   );
 });
 
